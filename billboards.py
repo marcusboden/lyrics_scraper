@@ -1,4 +1,4 @@
-#!/Users/rohan/miniconda/bin/python
+#!/usr/bin/env
 import billboard
 from datetime import date
 from datetime import timedelta
