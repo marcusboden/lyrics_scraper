@@ -47,7 +47,7 @@ keywords = keywords.downcase.gsub(/[^a-z0-9\s]/i, '')
 filepath = workdir + "/" +  keywords.gsub(' ', '-').gsub("/", "-")
 
 filepath = filepath.gsub(/[\s]/i,'')
-puts filepath
+#puts filepath
 
 # if File.exist?(filepath)
 #   exit
@@ -62,11 +62,11 @@ if song.nil?
   puts "ERROR: no song found. Either too ambiguous or no results"
   exit
 end
-puts song.url
+#puts song.url
 
 doc = Nokogiri::HTML(open(song.url))
 
 file = File.open(filepath, 'w')
-doc.xpath("//*[contains(@class, 'lyrics_')]").each do |node|
-   file.write( node.text )
+doc.xpath("//*[contains(@class, 'song_body-lyrics')]").each do |node|
+  file.write(node.text)
 end
